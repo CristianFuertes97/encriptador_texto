@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encriptador de Texto</title>
+    <link rel="shortcut icon" href="assets/encrypt.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css" />
+   
+</head>
+<body>
+    <div class="contenedor">
+        <a href="index.html"><img  class="logo" src="assets/logo.png" alt="logo alura"></a>
+        <div class="encriptado">
+            <textarea class="texto" name="textoarea" id="textoarea" cols="30" rows="10" placeholder="Ingresa el texto aqui..."></textarea>
+        </div>
+        <div class="terminos">
+            <img class="alerta" src="assets/alerta.png" alt="alerta" >
+            <p class="aviso"  id="aviso">Solo letras minúsculas y sin acentos.</p>
+        </div>
+        <div class="contenedor_botones">
+            <button class="contenedor_botones_encriptar" type="button" onclick="encriptador();">Encriptar</button>
+            <button class="contenedor_botones_desencriptar" type="button" onclick="desencriptar();">Desencriptar</button>
+        </div>
+    </div>
+    <div class="desencriptado">
+        <img src="assets/hacker.png" id="imagen">
+        
+        <div class="mensaj_encriptado" id="mensaj_encriptado">
+            <h2 id="titulo_mensaje">Ningún mensaje fue encontrado</h2>
+            <p id="parrafo">Ingresa el texto que deseas incriptar o desencriptar</p>
+            <button type="submit" class="copiar" id="copiar">Copiar</button>
+        </div>
+        <textarea class="evaluar" name="mensaje" id="mensaje" cols="30" rows="10" class="mensaje" readonly></textarea>
+        
+    </div>
+    <footer>
+        <p>Desarrollado por Cristian Fuertes</p>
+        <a href="https://github.com/CristianFuertes97"><img class="imggit" src="assets/githublogo.png" ></a>
+        <img src="assets/linke.png" href="">
+    </footer>
+</body>
+<script src="app.js"></script>
+</html>
