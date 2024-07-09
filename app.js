@@ -46,7 +46,16 @@ function desencriptar() {
         'ufat': 'u',
     };
     let desencriptado = texto.replace(/ai|enter|ober|imes|ufat/g, frase=> reemplazosInversos[frase]);
-    if (texto.length != 0){
+    
+    if (mayusculas(texto)==true){
+        mensaje.textContent = 'Ingrese letras minúsculas';
+        parrafo.textContent = '';
+    }
+    else if (caracteresEspeciales(texto)== true){
+        mensaje.textContent = 'Ingrese solo letras sin caracteres.';
+        parrafo.textContent = '';
+    }
+    else if (texto.length != 0){
         document.getElementById('mensaje').value = desencriptado;
         verdadero();
     }else{
