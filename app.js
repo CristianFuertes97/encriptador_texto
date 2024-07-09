@@ -8,6 +8,7 @@ const imagen = document.getElementById('imagen');
 const aviso = document.getElementById('aviso');
 const txt = document.getElementById('mensaje');
 
+// Funcion con las condiciones para encriptar el texto recibido 
 function encriptador(){
     let texto = document.getElementById('textoarea').value;
     let reemplazos = {
@@ -36,6 +37,7 @@ function encriptador(){
     return;
 }
 
+// Funcion con las condiciones para desencriptar el texto recibido 
 function desencriptar() {
     let texto = document.getElementById('textoarea').value;
     let reemplazosInversos= {
@@ -82,6 +84,7 @@ function verdadero() {
     txt.style.visibility ='inherit';
 }
 
+// funcion para validar que el texto no tenga letras mayusculas.
 function mayusculas(valor) {
     for (let i = 0; i < valor.length; i++){
         if (valor[i] >= 'A' && valor[i] <= 'Z'){
@@ -91,8 +94,9 @@ function mayusculas(valor) {
     return false;
 }
 
+// Función para validar que no tenga el texto caracteres especiales
 function caracteresEspeciales(frase) {
-    const simbolos = '0123456789/*-+@$%&#!?¿¡';
+    const simbolos = '0123456789/*-+@$%&#!?¿¡<>.)({}[]-_:;,|°"';
     for (let i = 0; i < frase.length; i++){
         const caracter = frase[i];
         if (simbolos.includes(caracter)){
