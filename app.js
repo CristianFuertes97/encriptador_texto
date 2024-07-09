@@ -1,14 +1,15 @@
+// Variables a utilizar 
 const botonCopiar = document.getElementById('copiar');
 const respuesta = document.getElementById('mensaje');
+const img = document.getElementById('imagen');
+const mensaje = document.getElementById('titulo_mensaje');
+const parrafo = document.getElementById('parrafo');
+const imagen = document.getElementById('imagen');
+const aviso = document.getElementById('aviso');
+const txt = document.getElementById('mensaje');
 
 function encriptador(){
     let texto = document.getElementById('textoarea').value;
-    let mensaje = document.getElementById('titulo_mensaje');
-    let parrafo = document.getElementById('parrafo');
-    let imagen = document.getElementById('imagen');
-    let boton = document.getElementById('copiar');
-    let aviso = document.getElementById('aviso');
-
     let reemplazos = {
                 'o': 'ober',
                 'a': 'ai',
@@ -17,32 +18,26 @@ function encriptador(){
                 'u': 'ufat',
             };
     let textoEncriptado = texto.replace(/[aeiou]/g, vocal => reemplazos[vocal]);
-
-    if (texto.length != 0){
-        document.getElementById('mensaje').value = textoEncriptado;
-        mensaje.textContent = 'Texto Cifrado con exito!!';
-        parrafo.textContent = "";
-        aviso.textContent = "Solo letras minúsculas y sin acentos."
-        imagen.remove();
-        boton.style.visibility ="inherit";
-    }else{
-        imagen.src = "./assets/hacker.png";
-        mensaje.textContent = 'Ningún mensaje fue encontrado';
-        parrafo.textContent = "Ingresa el texto que deseas encriptar o desencriptar";
-        aviso.textContent = "Ingresa un texto antes de continuar!!";
-        aviso.style.color ="whitesmoke";
-        aviso.style.fontWeight ="400";
-        aviso.style.fontSize ="14px";
+    
+    if (mayusculas(texto)==true){
+        mensaje.textContent = 'Ingrese letras minúsculas';
+        parrafo.textContent = '';
     }
-    return textoEncriptado;
+    else if (caracteresEspeciales(texto)== true){
+        mensaje.textContent = 'Ingrese solo letras sin caracteres.';
+        parrafo.textContent = '';
+    }
+    else if (texto.length != 0){
+        document.getElementById('mensaje').value = textoEncriptado;
+        verdadero();
+    }else{
+        condicionesIniciales();
+    }
+    return;
 }
-
 
 function desencriptar() {
     let texto = document.getElementById('textoarea').value;
-    let mensaje = document.getElementById('titulo_mensaje');
-    let parrafo = document.getElementById('parrafo');
-    let imagen = document.getElementById('imagen');
     let reemplazosInversos= {
         'ai': 'a',
         'enter':'e',
@@ -53,16 +48,49 @@ function desencriptar() {
     let desencriptado = texto.replace(/ai|enter|ober|imes|ufat/g, frase=> reemplazosInversos[frase]);
     if (texto.length != 0){
         document.getElementById('mensaje').value = desencriptado;
-        mensaje.textContent = 'Texto descifrado con exito';
-        parrafo.textContent = "";
-        imagen.remove();
+        verdadero();
     }else{
-        imagen.src = "./assets/hacker.png";
-        mensaje.textContent = 'Ningún mensaje fue encontrado';
-        parrafo.textContent = "Ingresa el texto que deseas encriptar o desencriptar";
-        
+        condicionesIniciales();
     }
-    return desencriptado;
+    return;
+}
+
+// Funcion que declara las condiciones cuando no hay texto en el text area
+function condicionesIniciales() {
+    mensaje.textContent = 'Ningún mensaje fue encontrado.';
+    parrafo.textContent = "Ingresa el texto que deseas encriptar o desencriptar";
+    botonCopiar.style.visibility ="hidden";
+    img.style.visibility ="inherit";
+    txt.style.visibility ='hidden';
+}
+
+// Funcion que declara todas las condiciones cuando hay valor en el textarea
+function verdadero() {
+    mensaje.textContent = '';
+    parrafo.textContent = "";
+    imagen.style.visibility ="hidden";
+    botonCopiar.style.visibility ="inherit";
+    txt.style.visibility ='inherit';
+}
+
+function mayusculas(valor) {
+    for (let i = 0; i < valor.length; i++){
+        if (valor[i] >= 'A' && valor[i] <= 'Z'){
+            return true;
+        }
+    }
+    return false;
+}
+
+function caracteresEspeciales(frase) {
+    const simbolos = '0123456789/*-+@$%&#!?¿¡';
+    for (let i = 0; i < frase.length; i++){
+        const caracter = frase[i];
+        if (simbolos.includes(caracter)){
+            return true;
+        }
+    }
+    return false;
 }
 
 botonCopiar.addEventListener("click", e=>{
@@ -72,4 +100,3 @@ botonCopiar.addEventListener("click", e=>{
     document.execCommand("copy");
 
 })
-

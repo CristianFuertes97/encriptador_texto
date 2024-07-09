@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&display=swap');
 
 *{
-    /* box-sizing: border-box; */
+    box-sizing: border-box;
     padding: 0;
     margin: 0;
     font-family: "Kanit", sans-serif;
@@ -280,7 +280,7 @@ footer img{
         flex-direction: row;
     }
     .contenedor::before{
-        /* background-image: url(assets/candados.png); */
+        
         background-repeat: no-repeat;
         background-position: 20%;
         content: "";
@@ -299,15 +299,15 @@ footer img{
     }
     .texto{
         width: 70%;
-        height: 55%;
-        left: 10%;
+        height: 45%;
+        left: 12%;
         top: 5%;
         font-size: 18px;
     }
     .terminos{
         width: 80%;
         left: 10%;
-        top: 65%;
+        top: 54%;
         
     }
     .terminos p{
@@ -315,14 +315,18 @@ footer img{
     }
     .contenedor_botones{
         width: 80%;
-        left: 10%;
-        top: 70%;
+        left: 12%;
+        top: 57%;
+        display: flex;
+        flex-direction: column;
+        
     }
     .contenedor_botones_encriptar,
     .contenedor_botones_desencriptar{
-        width: 48%;
+        width: 310px;
         border-radius: 16px;
-        font-size: 14px;
+        font-size: 16px;
+        height: 67px;
     }
     
     .desencriptado{
@@ -339,13 +343,14 @@ footer img{
     }
 
     .mensaj_encriptado h2{
-        visibility: hidden;
+        font-size: 20px;
+        padding: 24px 0px 0px 
     }
     .mensaj_encriptado p{
         margin:0%;
         padding: 0%;
         font-size: 16px;
-        visibility: hidden;
+        
     }
 
     .desencriptado img{
@@ -354,12 +359,12 @@ footer img{
         visibility: hidden;
     }
     .copiar{
-        margin-top: 0%;
+        margin-top: 12%;
         height: 30px;
         font-size: 12px;
         position: relative;
     }
-
+   
     .evaluar{
         font-size: 16px;
         padding: 10px;
@@ -371,7 +376,7 @@ footer img{
         font-size: 14px;
     }
     footer{
-        height: 10%;
+        height: 8%;
         font-size: 14px;
         top: 2%;
         visibility: inherit;
@@ -384,5 +389,7 @@ footer img{
     .imggit{
         width: 28px;
     }
-
+    .imglink{
+        width: 47px;
+    }
 }
