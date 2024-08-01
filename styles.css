@@ -71,7 +71,7 @@
     position: absolute;
     width: 80%;
     left: 14%;
-    top:80%;
+    top:75%;
 }
 
 .alerta{
@@ -97,7 +97,7 @@
     padding: 1%;
     position: absolute; 
     width: 80%;
-    top:80%;
+    top:75%;
     left: 14%;
     
 }
@@ -298,8 +298,8 @@ footer img{
 
     }
     .texto{
-        width: 70%;
-        height: 45%;
+        width: 80%;
+        height: 48%;
         left: 12%;
         top: 5%;
         font-size: 18px;

@@ -9,8 +9,8 @@ const aviso = document.getElementById('aviso');
 const txt = document.getElementById('mensaje');
 
 // Funcion con las condiciones para encriptar el texto recibido 
-function encriptador(){
-    let texto = document.getElementById('textoarea').value;
+function encriptador(textoEncriptar){
+    
     let reemplazos = {
                 'o': 'ober',
                 'a': 'ai',
@@ -18,28 +18,36 @@ function encriptador(){
                 'i': 'imes',
                 'u': 'ufat',
             };
-    let textoEncriptado = texto.replace(/[aeiou]/g, vocal => reemplazos[vocal]);
+    let textoEncriptado = textoEncriptar.replace(/[aeiou]/g, vocal => reemplazos[vocal]);
     
-    if (mayusculas(texto)==true){
-        mensaje.textContent = 'Ingrese letras minúsculas';
+    if (mayusculas(textoEncriptar)==true){
+        swal('Ooops!','Ingrese solo letras minúsculas','error');
         parrafo.textContent = '';
     }
-    else if (caracteresEspeciales(texto)== true){
-        mensaje.textContent = 'Ingrese solo letras sin caracteres.';
+    else if (caracteresEspeciales(textoEncriptar)== true){
+        swal('Ooops!','Ingrese solo letras sin caracteres','error');
         parrafo.textContent = '';
     }
-    else if (texto.length != 0){
+    else if (textoEncriptar.length != 0){
         document.getElementById('mensaje').value = textoEncriptado;
         verdadero();
     }else{
         condicionesIniciales();
     }
-    return;
+    return textoEncriptar;
+
+}
+
+// Funcion que ejecuta la logica de encriptacion
+function btnEncriptar() {
+    const encriptar = encriptador(document.getElementById('textoarea').value);
+    mensaje.value = encriptar;
+    document.getElementById('textoarea').value = '';
+
 }
 
 // Funcion con las condiciones para desencriptar el texto recibido 
-function desencriptar() {
-    let texto = document.getElementById('textoarea').value;
+function desencriptar(textoDesencriptar) {
     let reemplazosInversos= {
         'ai': 'a',
         'enter':'e',
@@ -47,23 +55,31 @@ function desencriptar() {
         'imes': 'i',
         'ufat': 'u',
     };
-    let desencriptado = texto.replace(/ai|enter|ober|imes|ufat/g, frase=> reemplazosInversos[frase]);
+    let desencriptado = textoDesencriptar.replace(/ai|enter|ober|imes|ufat/g, frase=> reemplazosInversos[frase]);
     
-    if (mayusculas(texto)==true){
-        mensaje.textContent = 'Ingrese letras minúsculas';
+    if (mayusculas(textoDesencriptar)==true){
+        swal('Ooops!','Ingrese solo letras minúsculas','error');
         parrafo.textContent = '';
     }
-    else if (caracteresEspeciales(texto)== true){
-        mensaje.textContent = 'Ingrese solo letras sin caracteres.';
+    else if (caracteresEspeciales(textoDesencriptar)== true){
+        swal('Ooops!','Ingrese solo letras sin caracteres','error');
         parrafo.textContent = '';
     }
-    else if (texto.length != 0){
+    else if (textoDesencriptar.length != 0){
         document.getElementById('mensaje').value = desencriptado;
         verdadero();
     }else{
         condicionesIniciales();
     }
-    return;
+    return textoDesencriptar;
+}
+
+// Funcion que ejecuta la logica de desencriptacion
+function btnDesencriptar() {
+    const desEncriptar = desencriptar(document.getElementById('textoarea').value);
+    mensaje.value = desEncriptar;
+    document.getElementById('textoarea').value = '';
+
 }
 
 // Funcion que declara las condiciones cuando no hay texto en el text area
@@ -111,5 +127,8 @@ botonCopiar.addEventListener("click", e=>{
     let copiarbtn = respuesta;
     copiarbtn.select();
     document.execCommand("copy");
+    swal('Copiado','Texto copiado con exito!',"success");
+    document.getElementById('mensaje').value = '';
+
 
 })

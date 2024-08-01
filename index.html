@@ -6,6 +6,7 @@
     <title>Encriptador de Texto</title>
     <link rel="shortcut icon" href="assets/encrypt.png" type="image/x-icon">
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
    
 </head>
 <body>
@@ -19,8 +20,8 @@
             <p class="aviso"  id="aviso">Solo letras minúsculas y sin acentos.</p>
         </div>
         <div class="contenedor_botones">
-            <button class="contenedor_botones_encriptar" type="submit" onclick="encriptador();">Encriptar</button>
-            <button class="contenedor_botones_desencriptar" type="button" onclick="desencriptar();">Desencriptar</button>
+            <button class="contenedor_botones_encriptar" type="submit" onclick="btnEncriptar();">Encriptar</button>
+            <button class="contenedor_botones_desencriptar" type="button" onclick="btnDesencriptar();">Desencriptar</button>
         </div>
     </div>
     <div class="desencriptado">
